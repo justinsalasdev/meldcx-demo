@@ -1,46 +1,22 @@
 import genClass from "../../helpers/genClass";
-import { useState } from "react";
+import useLogin from "./useLogin";
+
 import "./login.sass";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!email || !password) {
-      return;
-    }
-
-    try {
-      const endPoint = "http://35.201.2.209:8000/login";
-
-      const options = {
-        method: "POST",
-        "Content-type": "Application/json",
-        body: JSON.stringify({ email, password }),
-      };
-
-      const res = await fetch(endPoint, options);
-      const jsonData = await res.json();
-
-      console.log(jsonData);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  const $ = genClass({ block: "login" });
+export default function Login({ ps, setToken }) {
+  const {
+    error,
+    email,
+    password,
+    isLoading,
+    handleEmailChange,
+    handlePasswordChange,
+    handleSubmit
+  } = useLogin(setToken);
+  const $ = genClass({ block: "login", ps });
   return (
     <form {...$()} onSubmit={handleSubmit}>
+      <p {...$("error")}>{error}</p>
       <input
         {...$("input")}
         type="text"
@@ -57,7 +33,7 @@ export default function Login() {
       />
 
       <button type="submit" {...$("action")}>
-        Submit
+        {isLoading ? "---" : "Login"}
       </button>
     </form>
   );

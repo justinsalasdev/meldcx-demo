@@ -1,0 +1,40 @@
+
+.devices
+
+  position: relative
+  background: black
+  width: 30vw
+  height: 30vh
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+  &__count
+    color: whitesmoke
+    z-index: 2
+    font-size: 8rem
+
+  &__desc
+    color: whitesmoke
+    z-index: 2
+    font-size: 3rem
+
+  &__circles
+    top: 0
+    position: absolute
+    display: flex
+    align-items: center
+    align-content: center
+    justify-content: center
+    flex-wrap: wrap
+    width: 100%
+    height: 100%
+
+  &__circle
+    z-index: 1
+    width: 5rem
+    height: 5rem
+    border-radius: 50%
+    margin: 1rem
+    background: rgba(254,254,254,0.3)
