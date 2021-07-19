@@ -2,12 +2,29 @@
 .login
     display: flex
     flex-direction: column
+    padding: 4rem
+    border: 1px solid black
+    box-shadow: .4rem .4rem 1.2rem rgba(0,0,0,.2)
 
     &__input
+        outline: none
+        border: none
+        border-bottom: 2px solid rgba(0,0,0,0.4)
+        background: whitesmoke
+        font-size: 2rem
         margin-top: .5rem
-        padding: .5rem
+        padding: 1rem
+        margin-bottom: 2rem
+
+        &:focus
+            border-bottom: 2px solid lightblue
+
+        &:last-of-type
+            margin-bottom: 5rem
 
     &__action
+        font-size: 1.7rem
+        padding: .5rem .7rem
         margin-top: .5rem
         text-transform: uppercase
 
@@ -15,3 +32,4 @@
         font-size: 1.5rem
         text-align: center
         color: red
+        margin-bottom: 1rem

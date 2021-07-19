@@ -29,17 +29,17 @@ export default function App() {
     return <span>..Loading..</span>;
   }
 
-  return (
-    <div {...$()}>
-      <Devices ps={$("devices").className} />
-      <div {...$("actions")}>
-        {appToken && (
+  if (appToken) {
+    return (
+      <div {...$()}>
+        <Devices ps={$("devices").className} />
+        <div {...$("actions")}>
           <button onClick={createNotifyHandler(appToken)}>Notify</button>
-        )}
-        {appToken && <button onClick={handleLogout}>Logout</button>}
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       </div>
-
-      {!appToken && <Login ps={$("login").className} setToken={setToken} />}
-    </div>
-  );
+    );
+  } else {
+    return <Login ps={$("login").className} setToken={setToken} />;
+  }
 }
