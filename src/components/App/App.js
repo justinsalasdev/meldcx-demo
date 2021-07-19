@@ -1,3 +1,11 @@
+import genClass from "../../helpers/genClass";
+import Login from "../Login/Login";
 export default function App() {
-  return <div className="app">hahaha</div>;
+  const $ = genClass({ block: "app" });
+
+  return (
+    <div {...$()}>
+      <Login />
+    </div>
+  );
 }
